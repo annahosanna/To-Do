@@ -36,3 +36,5 @@ Ideas for things to do
   2.  Template automation
   3.  Encrypted S3 bucket logging
 * Add SLF4J examples
+* Add JDBC Ping tool
+  1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
