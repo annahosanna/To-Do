@@ -38,3 +38,22 @@ Ideas for things to do
 * Add SLF4J examples
 * Add JDBC Ping tool
   1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
+  
+### Stuff that I probably do not need
+https://github.com/systers/volunteers-iOS
+https://github.com/aspittel/election-map
+https://github.com/geofmureithi/254-Election-Predictor
+https://github.com/petewarden/iPhoneTracker
+https://github.com/angrobertsh/elections
+https://github.com/guardian/interactive-election-polls-2015
+https://github.com/fitzk/CAVotesByCounty
+https://github.com/torvarun/d3-us-election
+https://github.com/outragedpinkracoon/election-map-d3
+https://github.com/annahosanna/Transfiguration
+https://github.com/annahosanna/election_maps
+https://github.com/joyawood/Election-twitter-visualization
+https://github.com/gabriel-samfira/CoreClrPSUtils
+https://github.com/buinyi/Udacity-Data-Visualization-with-D3.js---Election-results
+https://github.com/mapmeld/election-tangram
+https://github.com/JEverhart383/D3js-Elections-
+
