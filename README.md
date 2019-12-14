@@ -1,20 +1,46 @@
 # To-Do
 Ideas for things to do
 
-###
+#### Loadbalancer support?
+* Adapt URL fetch to be a a general purpose URL health check (I'm not sure why anymore).
 
-* Finish off CustomClosableHttpClient in VPN notes
-* Adapt URL fetch to be a a general purpose URL health check
-* Qbit
-  1.  Fix the Consul functionality in Qbit
-  2.  Add some notes on using Promise.asHandler
-  3.  Move Qbit Consul functionality from blocking HTTP calls to non blocking.
-  4.  Add Qbit Vertx example
-* Add a Java tail implementation
-* Combine tail implementation with filter and Slack notifier from VPN notes project
-* Add Docker notes with regard to Oracle Linux and using S6, Runit, and minit.
-* Turn minit ```https://github.com/chazomaticus/minit``` into a process supervisor for Docker.
-* Add some Jenkins DSL notes.
+#### Realtime alerting
+* Add a Java tail implementation + Filter (grep kind of) + Slack client (raw or maybe Retrofit 2)
+* Combine tail implementation with filter and Slack notifier from VPN notes project.
+* Push to cloudtrail -> cloudwatch event -> SNS -> Lambda (https json serialization) -> Splunk/Slack/Whatever
+* Fliq -> API Gateway -> Lambda (eg. a Graal microserivce framework) -> Whatever
+* Some SLF4J notes
+
+#### Microservices and API Gateway and S3
+##### Microservice frameworks with Graal
+1. Vert.X
+2. Javalin
+3. SparkJava
+4. Micronaut
+5. Ratpack
+6. Pippa
+7. Quarkus?
+8. Helidon?
+9. Langon?
+10. Netifi?
+
+##### API Gateway + Lambda Notes
+* The focus of this will be microservices which can function with Graal. (Rust is awesome but supported directly by Lambdas)
+* Starting with TechEmpower benchmarks
+* 
+##### Demo using client side single page of microservices and API Gateway
+##### Notes for hosting a static website on S3
+
+#### Container stuff
+* Notes with regard to Oracle Linux and using S6, Runit, and minit.
+* Turn minit ```https://github.com/chazomaticus/minit``` into a process supervisor.
+
+#### Jenkins
+* Add some Jenkins DSL and Groovy notes.
+* Add JDBC Ping tool (Fail fast for db integration testing)
+  1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
+
+#### Inspired by ESRI ArcGIS work I have done:
 * Various projects related to election data both sources and visualization
   1.  https://github.com/timcraft/electionmap
   2.  https://github.com/markmarkoh/datamaps
@@ -31,15 +57,26 @@ Ideas for things to do
   13. https://github.com/buinyi/Udacity-Data-Visualization-with-D3.js---Election-results
   14. https://github.com/mapmeld/election-tangram
   15. https://github.com/JEverhart383/D3js-Elections-
-* CloudFormation examples
-  1.  JSON <-> YAML conversion
-  2.  Template automation
-  3.  Encrypted S3 bucket logging
-* Add SLF4J examples
-* Add JDBC Ping tool
-  1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
   
+#### CloudFormation examples (perhaps CDL and Teraform too)
+  1.  JSON <-> YAML conversion
+  2.  Template automation with FreeMarker
+  3.  Encrypted cross account S3 bucket logging
+  
+#### CustomClosableHttpClient uses HTTP Components
+* ~~Finish off~~ Stop working on CustomClosableHttpClient in VPN notes. It uses Apache HTTP Components which seem to be outdated.  Possibly switch to Netty. 
+
+#### Qbit is old. Use a lighter microservice framework
+* Qbit was kind of interesting in how many things it glued together (health, swagger, graphite stats, annotations to describe pages w/o beans)
+* The documentation was incomplete or out of date, but that was ok because it was open source.
+* Qbit
+  1.  Fix the Consul functionality in Qbit
+  2.  Add some notes on using Promise.asHandler
+  3.  Move Qbit Consul functionality from blocking HTTP calls to non blocking.
+  4.  Add Qbit Vertx example
+
 ### Stuff that I probably do not need
+```
 https://github.com/systers/volunteers-iOS
 https://github.com/aspittel/election-map
 https://github.com/geofmureithi/254-Election-Predictor
@@ -56,4 +93,4 @@ https://github.com/gabriel-samfira/CoreClrPSUtils
 https://github.com/buinyi/Udacity-Data-Visualization-with-D3.js---Election-results
 https://github.com/mapmeld/election-tangram
 https://github.com/JEverhart383/D3js-Elections-
-
+```
