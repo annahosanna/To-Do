@@ -23,6 +23,10 @@ Ideas for things to do
 8. Helidon?
 9. Langon?
 10. Netifi?
+11. Greenlightning
+12. Restexpress
+13. Armeria
+14. Wizzardo
 
 ##### API Gateway + Lambda Notes
 * The focus of this will be microservices which can function with Graal. (Rust is awesome but supported directly by Lambdas)
