@@ -28,6 +28,11 @@ Ideas for things to do
 13. Armeria
 14. Wizzardo
 
+##### Things to explore
+1. Spring Security
+2. Spring Session
+3. Wrapping Vertx with an HttpSession interface
+
 ##### API Gateway + Lambda Notes
 * The focus of this will be microservices which can function with Graal. (Rust is awesome but supported directly by Lambdas)
 * Starting with TechEmpower benchmarks
