@@ -8,11 +8,14 @@ Ideas for things to do
 * Add a Java tail implementation + Filter (grep kind of) + Slack client (raw or maybe Retrofit 2)
 * Combine tail implementation with filter and Slack notifier from VPN notes project.
 * Push to cloudtrail -> cloudwatch event -> SNS -> Lambda (https json serialization) -> Splunk/Slack/Whatever
-* Fliq -> API Gateway -> Lambda (eg. a Graal microserivce framework) -> Whatever
+* Fliq or (Amazon equivalent) -> API Gateway -> Lambda (eg. a Graal microserivce framework) -> Whatever
+  1. Microservice is cross region
+  2. Keeps track of shared session state in DynamoDB (Perhaps using Spring Session?)  
 * Some SLF4J notes
 
 #### Microservices and API Gateway and S3
-##### Microservice frameworks with Graal
+1. Prefer if I could test in a local container
+##### Java Microservice frameworks with Graal (not Kotlin or Scala right now)
 1. Vert.X
 2. Javalin
 3. SparkJava
@@ -27,26 +30,29 @@ Ideas for things to do
 12. Restexpress
 13. Armeria
 14. Wizzardo
+15. Vaaladin
 
 ##### Things to explore
 1. Spring Security
 2. Spring Session
-3. Wrapping Vertx with an HttpSession interface
+3. Does Vertx need to be wrapped with an HttpSession interface for Spring Session
 
 ##### API Gateway + Lambda Notes
-* The focus of this will be microservices which can function with Graal. (Rust is awesome but supported directly by Lambdas)
+* The focus of this will be microservices which can function with Graal. (Go/Rust/Python directly supported in Lambdas, so while some Rust microserivce frameworks look great, I will not be exploring those now)
 * Starting with TechEmpower benchmarks
-* 
-##### Demo using client side single page of microservices and API Gateway
-##### Notes for hosting a static website on S3
 
+##### Demo using client side single page app to microservices behind API Gateway
+1. Something in Angular2 or similar
+##### Notes for hosting a static website on S3
+1. Route 53
+2. Software to create static websites
 #### Container stuff
 * Notes with regard to Oracle Linux and using S6, Runit, and minit.
-* Turn minit ```https://github.com/chazomaticus/minit``` into a process supervisor.
+* Turn minit ```https://github.com/chazomaticus/minit``` into a process supervisor. (I'm not sure why a per process supervisior is useful)
 
 #### Jenkins
 * Add some Jenkins DSL and Groovy notes.
-* Add JDBC Ping tool (Fail fast for db integration testing)
+* Add JDBC Ping tool (Fail fast for db integration testing/liquibase)
   1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
 
 #### Inspired by ESRI ArcGIS work I have done:
