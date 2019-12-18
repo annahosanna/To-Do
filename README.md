@@ -36,6 +36,7 @@ Ideas for things to do
 1. Spring Security
 2. Spring Session
 3. Does Vertx need to be wrapped with an HttpSession interface for Spring Session
+4. Scheduled cloudwatch event to purge old sessions
 
 ##### API Gateway + Lambda Notes
 * The focus of this will be microservices which can function with Graal. (Go/Rust/Python directly supported in Lambdas, so while some Rust microserivce frameworks look great, I will not be exploring those now)
