@@ -92,6 +92,48 @@ Ideas for things to do
   3.  Move Qbit Consul functionality from blocking HTTP calls to non blocking.
   4.  Add Qbit Vertx example
 
+* Random
+```
+javalin
+sparkjava
+Utility library: https://google.github.io/dagger/ (Dagger 2) Enable reflections to function with graals ahead of time compilation
+https://royvanrijn.com/blog/2018/09/part-2-native-microservice-in-graalvm/ (a whole bunch of work arounds)
+micronaut
+quarkus
+helidon.io
+Interesting microservice design presentation: https://static.rainfocus.com/oracle/oow19/sess/1554495896703001jsZK/PF/DEV5354%20-%20Polyglot%20gRPC%20Microservices%20With%20Helidon%20and%20Graal_1568453488620001uUpI.pdf
+vert.x
+es4x (nodejs) + Redstone (Dart)
+narayana (transation control for web services)
+jooby2?
+https://spotify.github.io/apollo/
+act
+proteus
+pippo
+https://ratpack.io/
+https://github.com/networknt/light-rest-4j
+https://britesnow.com/snow
+retrofit 2
+restexpress
+ratpack
+gemini
+minijax
+jawn
+play2
+dropwizard
+wicket
+webflux
+tapestry
+ninja
+activeweb
+afterburner
+cjs
+curacao
+pac4j
+https://www.findbestopensource.com/tagged/microservice?fq=Java
+vxms
+dart + es4x ?
+```
 ### Stuff that I probably do not need
 ```
 https://github.com/systers/volunteers-iOS
