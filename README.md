@@ -39,6 +39,99 @@ Ideas for things to do
 4. Scheduled cloudwatch event to purge old sessions
 5. es4x + Dart Redstone
 
+##### Put these quick notes into something
+```
+final ManagedServiceBuilder managerServiceBuilder = ManagedServiceBuilder.managedServiceBuilder().setRootURI().setPort().setPublicHost();
+
+final CountDownLatch latch = new CountDownLatch(1);
+final Vertx vertx = Vertx.vertx();
+vertx.deployVertical(new MyVertxInitClass(managedServiceBuilder,data), result -> {
+if (result.succeeded()) {
+// yay
+} else {
+result.cause().printStackTrace();
+}
+latch.countDown();
+});
+
+latch.await(5, TimeUnit.SECONDS);
+// Yay  started
+
+/////////////////////////////////////
+class MyVertxInitClass extends AbstractVertical {
+private final ManagedServiceBuilder managedServiceBuilder;
+private QBitSystemManager systemManager;
+private final MyClass data;
+public MyVertxInitClass(ManagedServiceBuilder managedServiceBuilder,MyClass data) {
+this.managedServiceBuilder = managedServiceBuilder;
+this.data = data;
+}
+
+@override
+public void start() thows Exception {
+final io.advantageous.qbit.http.config.HttpServerOptions options = new io.advantageous.qbit.http.config.HttpServerOptions();
+final io.vertx.core.http.HttpServerOptions vertxOptions = new io.vertx.core.http.HttpServerOptions();
+// populate vertex options with qbit defaults ...
+// if ssl enabled
+// JksOptions trustStore ...
+// JksOptions keyStore ...
+// vertxOptions.setTrustStoreOptions ...
+// vartxOptions.setKeystoreOptions ...
+
+final io.vertx.core.http.HttpServer vertxHttpServer = this.getVertx().createHttpServer(vertxOptions);
+final Router router = Router.router(getVertx());
+router.route("/*").failureHandler(ctx -> {
+ctx.response().putHeader("Content-Type", "...").setStatusCode(...).end("body");
+})
+.handler(ctx -> {if (!(ctx.normalisedPath.matches(..))){
+ctx.response()...
+} else {
+ctx.next();
+}});
+final Route qbitRoute = router.route.path(...);
+HttpServer httpServer = VertxHttpServerBuilder.vertxHttpServerBuilder.setRoute(qbitRoute)
+.setHttpServer(vertxHttpServer)
+.setVertx(getVertx())
+.build();
+this.systemManager = this.managedServiceBuilder.getSystemManager();
+this.managedServiceBuilder.addEndpointService(new myQbitEnpointClass(this.data))
+this.ManagedServiceBuilder
+.getEndpointServerBuilder()
+.setHttpServer(httpServer)
+.build()
+.startServer();
+vertxHttpServer.requestHandler(route::accept).listen(
+managedServiceBuilder.getPort(),myHostname());
+)
+}
+@override
+public void stop() throws Exception {
+if (systemManager!=null) {
+systemManager.shutDown();
+}
+}
+}
+######################
+// Qbit callback
+public void myFunction(Callback<HttpTextResponse> callback) {
+final Logger staticLog = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+final CallbackBuilder callbackBuilder = CallbackBuilder.newCallBackBuilder();
+callbackBuilder.delegateWithLogging(callback, staticLog, "name");
+// httpTextResponse is input for the lambda but is not used in this example
+callbackBuilder.withCallback(HttpTextResponse.class, httpTextResponse -> {
+myLongRunningMethod();
+// callbacks can call functions which take callbacks, but the functions they call always returns void and
+// have at least one argument (the callback) but may also pass in additional arguments
+// The return value
+callback.resolve(
+HttpResponseBuilder.httpResponseBuilder().buildTextResponse()
+);
+});
+// execute the callback chain
+callbackBuilder.build().resolve();
+
+}
+```
 ##### API Gateway + Lambda Notes
 * The focus of this will be microservices which can function with Graal. (Go/Rust/Python directly supported in Lambdas, so while some Rust microserivce frameworks look great, I will not be exploring those now)
 * Starting with TechEmpower benchmarks
