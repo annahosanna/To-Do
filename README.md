@@ -237,6 +237,9 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-78-4.pdf
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-76-2.pdf
 https://www.idmanagement.gov/wp-content/uploads/sites/1171/uploads/TIG_SCEPACS_v2.3.pdf
 
+#### DynamoDB
+Find an open source jdbc connector to integrate with a session state library for cross region replication (unlike elasticache)
+
 ### Stuff that I probably do not need
 ```
 https://github.com/systers/volunteers-iOS
