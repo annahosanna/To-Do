@@ -33,6 +33,6 @@ Python (By Microsoft)
 ```
 ```
 VSCode doesn't have good semantic highlighting support - trying Eva
-Could not find Minimap modules
+Could not find Minimap modules - something is built in ("editor.minimap.enabled": true)
 Could not find Dockblockr
 ```
