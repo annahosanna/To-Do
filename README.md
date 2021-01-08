@@ -31,6 +31,7 @@ Ideas for things to do
 13. Armeria
 14. Wizzardo
 15. Vaaladin
+16. Firefly
 
 ##### Things to explore
 1. Spring Security
