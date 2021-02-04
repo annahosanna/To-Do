@@ -15,6 +15,7 @@ json-converter
 linter
 linter-js-yaml
 linter-ui-default
+merge-conflicts
 minimap
 minimap-find-and-replace
 minimap-git-diff
@@ -25,6 +26,9 @@ multiline-tab
 pretty-json
 semanticolor
 split-diff
+sort-lines
+tabs-to-spaces
+text-manipulation
 ```
 ## VSCode
 ```
