@@ -28,6 +28,15 @@ semanticolor
 split-diff
 sort-lines
 tabs-to-spaces
+```
+```
+Other Atom
+If you have a Bluecoat or private CA:
+NODE_EXTRA_CA_CERTS=<path>
+Then install cert-tweaks package
+Also:
+tab-control
+auto-detect-indentation
 text-manipulation
 ```
 ## VSCode
