@@ -11,7 +11,7 @@ Create an alert with the target of a sqs queue, which then has events dequeued b
 ### Other Ways Splunk Gets Data
 Syslog data to a Splunk Forwarder
 JSON data to a Splunk HTTP Event Collector (HEC)
-Splunk reading an S3 bucket
+Splunk reading an S3 bucket when notified that the S3 bucket has new data.
 Splunk reading an S3 bucket with Firehose
 Splunk has application specific agents - such as logging into a database server and querying their logs as a database user.
 Splunk integration with 3rd party products like Nessus.
