@@ -4,11 +4,13 @@
 auto-indent
 busy-signal
 compare-files
+copy-find-results
 docblockr
 file-types
 highlight-bad-chars
 highlight-selected
 ide-python
+indent-detective
 indent-guide-improved
 intentions
 json-converter
@@ -35,8 +37,6 @@ If you have a Bluecoat or private CA:
 NODE_EXTRA_CA_CERTS=<path>
 Then install cert-tweaks package
 Also:
-tab-control
-auto-detect-indentation
 text-manipulation
 ```
 ## VSCode
