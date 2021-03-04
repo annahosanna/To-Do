@@ -56,14 +56,19 @@ Settings -> General -> Keyboard -> Hardware Keyboard (Only appears when keyboard
 Settings -> Accessibility (This contains the various keyboard shortcuts)
 Settings -> Accessibility -> Enable Full Keyboard Access (Enabling this intercepts a few more key strokes, but doesn't make a huge difference)
 
+Press Control-Option-Command-P to put the keyboard into pass through mode (Otherwise some keys, like arrow keys, will not work)
+
+The Apple Pencil is very handy for pointing to small menu icons (as well as Scribble).
+
+
+Citrix seems to intercept a lot of characters:
 Control is not correctly intercepted for all keystrokes
 ^-] and ^-\ act as if a key was not pressed
 ^ with any numeric key, or ; ' ` / act as if ^ was not pressed (and just shows the key)
 That ^-/ does not work is very annoying for block comments, and needs to be remapped.
 
-Press Control-Option-Command-P to put the keyboard into pass through mode (Otherwise some keys, like arrow keys, will not work)
+Within Citrix, Atom seems like ^ by itself is not passed through, but rather passed when a combination of keys has been pressed. Web browser key checking sites via Citrix perform even worse. 
 
-The Apple Pencil is very handy for pointing to small menu icons (as well as Scribble).
 ```
 
 ## VSCode
