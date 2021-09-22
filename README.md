@@ -99,8 +99,9 @@ public void stop() throws Exception {
 1. Route 53
 2. Software to create static websites
 #### Container stuff
-* Notes with regard to Oracle Linux and using S6, Runit, and minit.
+* Notes with regard to Oracle Linux and using S6, Runit, and minit (Originally at `https://github.com/chazomaticus/minit`)
 * Turn minit ```https://github.com/chazomaticus/minit``` into a process supervisor. (I'm not sure why a per process supervisior is useful)
+* Example project of a Docker container with a Process Supervisor, which start multiple processes such as (S6 Overlay)[https://github.com/just-containers/s6-overlay]
 
 #### Jenkins
 * Add some Jenkins DSL and Groovy notes.
