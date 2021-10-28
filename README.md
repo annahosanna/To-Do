@@ -1,9 +1,6 @@
 # To-Do
 Ideas for things to do
 
-#### Loadbalancer support?
-* Adapt URL fetch to be a a general purpose URL health check (I'm not sure why anymore).
-
 #### Realtime alerting
 * Add a Java tail implementation + Filter (grep kind of) + Slack client (raw or maybe Retrofit 2)
 * Combine tail implementation with filter and Slack notifier from VPN notes project.
@@ -13,8 +10,13 @@ Ideas for things to do
   2. Keeps track of shared session state in DynamoDB (Perhaps using Spring Session?)  
 * Some SLF4J notes
 
+#### Cross Region Session State Implementation
+  * Many of AWS session state recommendations are not cross region. Figure out how  to use something like DynamoDB.
+ 
 #### Microservices and API Gateway and S3
-1. Prefer if I could test in a local container
+  * Might be fun to write some Lambdas to test with API gateway. 
+  * Might be fun to write Vertx REST serice in an ECS or EKS container fronted by API Gateway
+  * 
 ##### Java Microservice frameworks with Graal (not Kotlin or Scala right now)
 1. Vert.X
 2. Javalin
@@ -37,8 +39,8 @@ Ideas for things to do
 1. Spring Security
 2. Spring Session
 3. Does Vertx need to be wrapped with an HttpSession interface for Spring Session
-4. Scheduled cloudwatch event to purge old sessions
-5. es4x + Dart Redstone
+4. Scheduled cloudwatch event to purge old sessions (from a session store db)
+5. es4x + Dart Redstone?
 
 ##### Put these quick notes into something
 ```
@@ -95,20 +97,33 @@ public void stop() throws Exception {
 
 ##### Demo using client side single page app to microservices behind API Gateway
 1. Something in Angular2 or similar
+
+#### New Languages To Learn
+  * AST reasearch
+  * TypeScript looks useful
+  
 ##### Notes for hosting a static website on S3
 1. Route 53
 2. Software to create static websites
+
 #### Container stuff
-* Notes with regard to Oracle Linux and using S6, Runit, and minit (Originally at `https://github.com/chazomaticus/minit`)
-* Turn minit ```https://github.com/chazomaticus/minit``` into a process supervisor. (I'm not sure why a per process supervisior is useful)
+* Process supervisors which do not use cgroups and are meant to run as pid 1: S6, Runit
+* (S6 Overlay)[https://github.com/just-containers/s6-overlay]
+* What about tini -> bash -> Start programs -> 'wait'
+* Minimalistic init's to prevent zombies and resource leaks: tini/dumb-init/minit (Originally at `https://github.com/chazomaticus/minit`)/(or any other simple init)
 * Example project of a Docker container with a Process Supervisor, which start multiple processes such as (S6 Overlay)[https://github.com/just-containers/s6-overlay]
+* socklog (deal with missing /dev/log)
+* https://github.com/aws/aws-codebuild-docker-images/tree/master/al2/x86_64/standard/3.0 (this also does dind)
+* Systemd does not work in containers without extra capabilities for a number of reasons such as cgroups, and dbus - but it seems to be the standard most applications use.
+* Need to add a link here to the explanation of why dind is so hard, and which solutions are truely rootless.
+* Add ECS/ECR notes
 
 #### Jenkins
 * Add some Jenkins DSL and Groovy notes.
 * Add JDBC Ping tool (Fail fast for db integration testing/liquibase)
   1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
 
-#### Inspired by ESRI ArcGIS work I have done:
+#### Projects I'm interested in because of the ESRI ArcGIS work I have done:
 * Various projects related to election data both sources and visualization
   1.  https://github.com/timcraft/electionmap
   2.  https://github.com/markmarkoh/datamaps
@@ -185,9 +200,6 @@ https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-73-4.pdf
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-78-4.pdf
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-76-2.pdf
 https://www.idmanagement.gov/wp-content/uploads/sites/1171/uploads/TIG_SCEPACS_v2.3.pdf
-
-#### DynamoDB
-Find an open source jdbc connector to integrate with a session state library for cross region replication (unlike elasticache)
 
 ### Stuff that I probably do not need
 ```
