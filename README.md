@@ -127,6 +127,7 @@ public void stop() throws Exception {
     1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
     2. https://blog.aquasec.com/securing-aws-fargate-with-sidecards
     3. https://aws.amazon.com/blogs/compute/nginx-reverse-sidecar-container-on-amazon-ecs/
+    4. https://blog.aquasec.com/revisiting-aws-fargate-with-aqua-3.0
   * Add another entry to the array of images in the Task Definition. These can then share resources, but run as two seperate containers.
     1. Good for being able to upgrade one container image without affecting the other.
 
