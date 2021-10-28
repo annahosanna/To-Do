@@ -1,8 +1,10 @@
 # Plugins for various editors
 ## Atom
 ```
+atom-ide-base
 auto-indent
 busy-signal
+cert-tweaks
 compare-files
 copy-find-results
 docblockr
@@ -14,6 +16,10 @@ indent-detective
 indent-guide-improved
 intentions
 json-converter
+language-docker
+language-gradle
+language-groovy
+language-powershell
 linter
 linter-js-yaml
 linter-ui-default
