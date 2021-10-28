@@ -116,8 +116,12 @@ public void stop() throws Exception {
 * https://github.com/aws/aws-codebuild-docker-images/tree/master/al2/x86_64/standard/3.0 (this also does dind)
 * Systemd does not work in containers without extra capabilities for a number of reasons such as cgroups, and dbus - but it seems to be the standard most applications use.
 * Need to add a link here to the explanation of why dind is so hard, and which solutions are truely rootless.
-* Add ECS/ECR notes
 
+#### Add ECS/ECR notes
+  * Add notes
+  * Find out how to do sidecars
+    1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
+    2. https://blog.aquasec.com/securing-aws-fargate-with-sidecards
 #### Jenkins
 * Add some Jenkins DSL and Groovy notes.
 * Add JDBC Ping tool (Fail fast for db integration testing/liquibase)
