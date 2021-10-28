@@ -57,7 +57,8 @@ latch.countDown();
 
 latch.await(5, TimeUnit.SECONDS);
 // Yay  started
-
+```
+```
 /////////////////////////////////////
 class MyVertxInitClass extends AbstractVertical {
 public MyVertxInitClass(MyClass data) {
@@ -116,12 +117,19 @@ public void stop() throws Exception {
 * https://github.com/aws/aws-codebuild-docker-images/tree/master/al2/x86_64/standard/3.0 (this also does dind)
 * Systemd does not work in containers without extra capabilities for a number of reasons such as cgroups, and dbus - but it seems to be the standard most applications use.
 * Need to add a link here to the explanation of why dind is so hard, and which solutions are truely rootless.
+* S6 examples with comments. Execlineb and the way it uses a stack is neat and logical, but some examples are needed for when to use one thing rather than another.
+* S6 sometimes uses some fd stuff that is confusing and needs better comments.
+* S6 also needs to document its limits - such as when it needs a helper program, like socklog.
 
 #### Add ECS/ECR notes
   * Add notes
   * Find out how to do sidecars
     1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
     2. https://blog.aquasec.com/securing-aws-fargate-with-sidecards
+    3. https://aws.amazon.com/blogs/compute/nginx-reverse-sidecar-container-on-amazon-ecs/
+  * Add another entry to the array of images in the Task Definition. These can then share resources, but run as two seperate containers.
+    1. Good for being able to upgrade one container image without affecting the other.
+
 #### Jenkins
 * Add some Jenkins DSL and Groovy notes.
 * Add JDBC Ping tool (Fail fast for db integration testing/liquibase)
