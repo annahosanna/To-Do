@@ -109,6 +109,7 @@ public void stop() throws Exception {
 
 #### Container stuff
 * Process supervisors which do not use cgroups and are meant to run as pid 1: S6, Runit
+  1. Seems like AWS ECS Fargate injects some metadata environment variables into `/proc/1/environ` so it might be important to retain pid 1 environ. 
 * (S6 Overlay)[https://github.com/just-containers/s6-overlay]
 * What about tini -> bash -> Start programs -> 'wait'
 * Minimalistic init's to prevent zombies and resource leaks: tini/dumb-init/minit (Originally at `https://github.com/chazomaticus/minit`)/(or any other simple init)
@@ -120,8 +121,22 @@ public void stop() throws Exception {
 * S6 examples with comments. Execlineb and the way it uses a stack is neat and logical, but some examples are needed for when to use one thing rather than another.
 * S6 sometimes uses some fd stuff that is confusing and needs better comments.
 * S6 also needs to document its limits - such as when it needs a helper program, like socklog.
+* Although I may not like it some software requires systemd
+  1. systemd (systemctl) (docker-systemctl-replacement)
+  2. rsyslog
+  3. logrotate
+  4. binutils
+  5. coreutils
+  6. python3
+  7. iptables
+  8. util-linux
+  9. iproute
+  10. net-tools
+  11. maybe ethtool
+  12. dbus
+  13. maybe java 
 
-#### Add ECS/ECR notes
+#### Add ECS/ECR/Fargate notes
   * Add notes
   * Find out how to do sidecars
     1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
@@ -130,6 +145,7 @@ public void stop() throws Exception {
     4. https://blog.aquasec.com/revisiting-aws-fargate-with-aqua-3.0
   * Add another entry to the array of images in the Task Definition. These can then share resources, but run as two seperate containers.
     1. Good for being able to upgrade one container image without affecting the other.
+  * An ECS Fargate Metadata to EC2 Metadata mock. Some software assumes EC2, doesn't understand where to get ECS metadata. A mock that combines iptables, the ECS Metadata and some API calls to produce something that looks like EC2 Metadata would be useful for software compatibility.
 
 #### Jenkins
 * Add some Jenkins DSL and Groovy notes.
