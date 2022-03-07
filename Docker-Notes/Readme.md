@@ -3,11 +3,15 @@
 Great source of info about al2 dockerfiles: `https://github.com/aws/aws-codebuild-docker-images/blob/master/al2/x86_64/standard/3.0/Dockerfile`
 Dbus Notes:
 ```
-# First accept that you will have to install systemd :(
-yum install procps-ng mlocate dbus dbus-libs util-linux
-# Don't need rsync but that would cause systemd to be installed too
-# place docker-systemctl-replacement files in /usr/bin and symlink as necessary 
-# see the busybox site for how to integrate run-it with systemd - could do this with s6 too.
+* First accept that you will have to install systemd :(
+ 1. yum install procps-ng mlocate dbus dbus-libs util-linux
+ 2. Many tools like rsync and OpenSSH (distro), have for no good reason, been forced to use Systemd as a dependancy by the distro vendor.
+* Systemd was not made to use containers and rely on the abilty to see cgroups, in the same way Docker does. This allows Systemd Units for which a parent process has exitted but the child remains to be correctly managed.
+ 1. While systemd is useless - systemctl, and journalctl are still necessary, so they should be replaced with:
+  * docker-systemctl-replacement, and docker-journalctl-replacement files in /usr/bin and symlink as necessary
+  * Further process management can also be done with s6, s6-overlay, and run-it
+  * [Integrating Runit with Systemd Example](https://busybox.net/kill_it_with_fire.txt)
+
 # basically if you are running without cgroups then do not daemonize services 
 # so that the process supervisor can do its job 
 # When building the dockerfile you might need to fake dbus
