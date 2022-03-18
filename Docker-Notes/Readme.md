@@ -43,7 +43,7 @@
  5. Using From the Go Container Registry project use the crane tool to upload to Docker repositories.
 * Great source of info about al2 dockerfiles: `https://github.com/aws/aws-codebuild-docker-images/blob/master/al2/x86_64/standard/3.0/Dockerfile`
 #### SSM/CloudWatch
-When fargate injects environment variables it does so to PID 1, so you may need to copy the variable name and value from PID 1 into the PID of Cloudwatch and SSM, in order to assume a role. `export ($strings /proc/1/environ | grep AWS_CONTAINER_CREDENTIALS_RELATIVE_URI )` and similar.
-`ENV RUN_IN_CONTAINER=True`
-If there are health chech ipc errors: `rm -rf /var/lib/amazon/ssm/ipc`
-Worst case, you might need to treat the container like foriegn hybid infristructure, and configure ssm accordingly.
+* When fargate injects environment variables it does so to PID 1, so you may need to copy the variable name and value from PID 1 into the PID of Cloudwatch and SSM, in order to assume a role. `export ($strings /proc/1/environ | grep AWS_CONTAINER_CREDENTIALS_RELATIVE_URI )` and similar.
+* `ENV RUN_IN_CONTAINER=True`
+* If there are health chech ipc errors: `rm -rf /var/lib/amazon/ssm/ipc`
+* Worst case, you might need to treat the container like foriegn hybid infristructure, and configure ssm accordingly.
