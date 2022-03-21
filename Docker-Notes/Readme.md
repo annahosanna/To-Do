@@ -47,3 +47,9 @@
 * `ENV RUN_IN_CONTAINER=True`
 * If there are health chech ipc errors: `rm -rf /var/lib/amazon/ssm/ipc`
 * Worst case, you might need to treat the container like foriegn hybid infristructure, and configure ssm accordingly.
+#### Java Note
+* In a Dockerfile, any non standard library path might need something like:
+```
+echo "/path/to/libs" > /etc/ld.so.conf.d/file.conf
+ldconfig
+```
