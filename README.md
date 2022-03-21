@@ -222,13 +222,13 @@ dart + es4x ?
 ```
 
 #### Update FASC-N in BAE-Client
-Validate checksum in iterator and add new 800-87r2 codes
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-87r2.pdf
-https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.201-2.pdf
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-73-4.pdf
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-78-4.pdf
-https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-76-2.pdf
-https://www.idmanagement.gov/wp-content/uploads/sites/1171/uploads/TIG_SCEPACS_v2.3.pdf
+* Validate checksum in iterator and add new 800-87r2 codes
+* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-87r2.pdf
+* https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.201-2.pdf
+* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-73-4.pdf
+* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-78-4.pdf
+* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-76-2.pdf
+* https://www.idmanagement.gov/wp-content/uploads/sites/1171/uploads/TIG_SCEPACS_v2.3.pdf
 
 ### Stuff that I probably do not need
 ```
