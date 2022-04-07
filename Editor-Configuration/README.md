@@ -91,5 +91,5 @@ Todo: Find packages for yaml linting, json <-> yaml conversion, tab to space con
 ```
 Semanticolor like extension for VSCode: Color Identifiers by Mathew Nespor or Semantic Highlighting by Malcommielle.
 Could not find Minimap modules - something is built in ("editor.minimap.enabled": true)
-Could not find Dockblockr (ctrl+/ maybe)
+VS DocBlockr
 ```
