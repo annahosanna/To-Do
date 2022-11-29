@@ -47,7 +47,7 @@
 * When fargate injects environment variables it does so to PID 1, so you may need to copy the variable name and value from PID 1 into the PID of Cloudwatch and SSM, in order to assume a role. `export ($strings /proc/1/environ | grep AWS_CONTAINER_CREDENTIALS_RELATIVE_URI )` and similar.
 * `ENV RUN_IN_CONTAINER=True`
 * If there are health chech ipc errors: `rm -rf /var/lib/amazon/ssm/ipc`
-* Worst case, you might need to treat the container like foriegn hybid infristructure, and configure ssm accordingly.
+* Worst case, you might need to treat the container like foriegn hybid infrastructure, and configure ssm accordingly.
 #### Java Note
 * In a Dockerfile, any non standard library path might need something like:
 ```
@@ -55,3 +55,4 @@ echo "/path/to/libs" > /etc/ld.so.conf.d/file.conf
 ldconfig
 ```
 * AWS Corretto Headless via yum depends in systemd - and is not meant for containers. If you want to roll your own AL2 Java then refer to the Dockerfile provided by AWS for the correct yum repo. 
+#### TODO: Add a note about flattening using `FROM scratch` rather than dumping a running container to a tar file and back.
