@@ -55,4 +55,16 @@ echo "/path/to/libs" > /etc/ld.so.conf.d/file.conf
 ldconfig
 ```
 * AWS Corretto Headless via yum depends in systemd - and is not meant for containers. If you want to roll your own AL2 Java then refer to the Dockerfile provided by AWS for the correct yum repo. 
-#### TODO: Add a note about flattening using `FROM scratch` rather than dumping a running container to a tar file and back.
+#### Save layers
+* Create the image and then only copy the needed parts - for instance if a whole bunch of tools were installed to build a binary, but only the resulting binary is needed, or if the certificate store was manipulated using several commands, but only the final result is needed.
+```
+FROM mybase as firstthing
+...
+...
+FROM myotherbase as secondthing
+...
+...
+FROM scratch
+COPY --from=firstthing / /first/
+COPY --from=secondthing / /second/
+```
