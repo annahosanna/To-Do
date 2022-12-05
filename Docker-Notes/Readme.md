@@ -59,7 +59,7 @@ ldconfig
 echo $(dirname $(dirname $(which java | tr -d '[:space:]!')))"/lib"
 ```
 #### AWS Corretto and OpenJDK do not have the same systemd requirement.
-* AWS Corretto Headless via yum depends in systemd - and is not meant for containers. If you want to roll your own AL2 Java then refer to the Dockerfile provided by AWS for the correct yum repo. (Unlike OpenDK)
+* AWS Corretto Headless via yum depends on systemd - and is not meant for containers. If you want to roll your own AL2 Java then refer to the Dockerfile provided by AWS for the correct yum repo. (Unlike OpenDK)
 #### Save layers
 * Create the image and then only copy the needed parts - for instance if a whole bunch of tools were installed to build a binary, but only the resulting binary is needed, or if the certificate store was manipulated using several commands, but only the final result is needed.
 ```
@@ -73,3 +73,4 @@ FROM scratch
 COPY --from=firstthing / /first/
 COPY --from=secondthing / /second/
 ```
+* Caveat: Check that suid bit is still set correctly after copy.
