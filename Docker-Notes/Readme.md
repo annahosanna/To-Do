@@ -48,13 +48,18 @@
 * `ENV RUN_IN_CONTAINER=True`
 * If there are health chech ipc errors: `rm -rf /var/lib/amazon/ssm/ipc`
 * Worst case, you might need to treat the container like foriegn hybid infrastructure, and configure ssm accordingly.
-#### Java Note
+#### Java library note
 * In a Dockerfile, any non standard library path might need something like:
 ```
 echo "/path/to/libs" > /etc/ld.so.conf.d/file.conf
 ldconfig
 ```
-* AWS Corretto Headless via yum depends in systemd - and is not meant for containers. If you want to roll your own AL2 Java then refer to the Dockerfile provided by AWS for the correct yum repo. 
+* For Java it might be similar to:
+```
+echo $(dirname $(dirname $(which java | tr -d '[:space:]!')))"/lib"
+```
+#### AWS Corretto and OpenJDK do not have the same systemd requirement.
+* AWS Corretto Headless via yum depends in systemd - and is not meant for containers. If you want to roll your own AL2 Java then refer to the Dockerfile provided by AWS for the correct yum repo. (Unlike OpenDK)
 #### Save layers
 * Create the image and then only copy the needed parts - for instance if a whole bunch of tools were installed to build a binary, but only the resulting binary is needed, or if the certificate store was manipulated using several commands, but only the final result is needed.
 ```
