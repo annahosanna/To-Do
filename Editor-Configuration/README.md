@@ -1,47 +1,47 @@
 # Plugins for various editors
 ## Atom
 ```
-atom-ide-base
-auto-indent
-busy-signal
-cert-tweaks
-compare-files
-copy-find-results
-docblockr
-file-types
-highlight-bad-chars
-highlight-selected
-ide-python
-indent-detective
-indent-guide-improved
-intentions
-json-converter
+atom-ide-base (Generic IDE framework required for language specific IDEs)
+auto-indent (Automatically align code within scope using current tab stop character)
+busy-signal (part of linter package)
+compare-files (select two files from side bar, and open them for differences)
+copy-find-results (copy results from finding accross files)
+docblockr (quickly put in skelton of javadoc)
+file-types (add file types so that the language does not have to be mannually selected)
+highlight-bad-chars (highlight invisible unicode characters, which could cause problems)
+highlight-selected (high light all instances of a selected word in a document)
+ide-python (a python ide)
+indent-detective (automatically determine the type if indentation used in a file)
+indent-guide-improved (show vertical lines for scope matching)
+intentions (part of the linter package)
+json-converter (convert from json to yaml and back)
 language-docker
 language-gradle
 language-groovy
 language-powershell
-linter
+linter (a generic linter framework which linters build upon)
 linter-js-yaml
-linter-ui-default
-merge-conflicts
-minimap
-minimap-find-and-replace
-minimap-git-diff
-minimap-highlight-selected
-minimap-linter
-minimap-split-diff
-multiline-tab
-pretty-json
-semanticolor
-split-diff
+linter-ui-default (part of linter framework)
+merge-conflicts (mergetool functionality)
+minimap (miniture of entire document on right side)
+minimap-find-and-replace (results displayed in minimap)
+minimap-git-diff (results displayed in minimap)
+minimap-highlight-selected (results displayed in minimap)
+minimap-linter (results displayed in minimap)
+minimap-split-diff (results displayed in minimap)
+multiline-tab (wrap open document tabs, instead of scrolling to the right forever)
+pretty-json (minifie <-> prettifie JSON)
+semanticolor (make each variable a different color using tree sitter - with a fall back to pre tree sitter) 
+split-diff (view file differences side by side)
 sort-lines
-tabs-to-spaces
+tabs-to-spaces (convert delemiter, for instance auto indent to align and then convert)
 ```
 ```
 Other Atom
 If you have a Bluecoat or private CA:
 NODE_EXTRA_CA_CERTS=<path>
 Then install cert-tweaks package
+cert-tweaks (for using a private CA)
 Also:
 text-manipulation
 font
