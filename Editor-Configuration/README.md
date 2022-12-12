@@ -1,5 +1,9 @@
 # Plugins for various editors
 ## Atom
+---
+### RIP Atom Dec. 15 2022
+Basically the same day MS purchased GitHub new commits to Atom fell to almost 0, likely because MS was pushing VSCode.
+#### Historical Atom Plugins, which because of core editor internal design decisions, some are still better than what can be found in VSCode. 
 ```
 atom-ide-base (Generic IDE framework required for language specific IDEs)
 auto-indent (Automatically align code within scope using current tab stop character)
@@ -89,7 +93,6 @@ pyflakes would be much better but is only in the pylama package which is not ena
 Todo: Find packages for yaml linting, json <-> yaml conversion, tab to space conversion, method to set tab length, multiline tabs, sorting, diffing, finding across files and copying find results.
 ```
 ```
-Semanticolor like extension for VSCode: Color Identifiers by Mathew Nespor or Semantic Highlighting by Malcommielle.
-Could not find Minimap modules - something is built in ("editor.minimap.enabled": true)
+Semanticolor like extension for VSCode: Color Identifiers by Mathew Nespor or Semantic Highlighting by Malcommielle. (The logic is fairly simple, but relies on a 3rd party language plugin - for each language - to do the right thing. Thus weird things happen such as the document only tokenizing if it is opened directly, rather than as a part of a project.)  
 VS DocBlockr
 ```
