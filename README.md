@@ -249,3 +249,9 @@ https://github.com/buinyi/Udacity-Data-Visualization-with-D3.js---Election-resul
 https://github.com/mapmeld/election-tangram
 https://github.com/JEverhart383/D3js-Elections-
 ```
+#### React Notes
+```
+Make sure your libraries are compatible with the version of react you have installed (lets say 18+)
+React bootstrap modules: read-scripts, react
+Some libaries which are interesting: next, axios, react-router, react-dom, react-arborist
+```
