@@ -1,7 +1,7 @@
 # Math Notes For Development
 
 ### Need a fast calculation of BDC (Binary Coded Decimal)
-### With the final number being an xor checksum
+### With the final value being an xor checksum
 ```
 0 = 0000
 1 = 0001
@@ -19,9 +19,9 @@
 
 ```
 # Assumes average over a infinite number of samples b/c count does not have an upper limit
-next = 0
-current = 0
-count = 0
+really_big_float next = 0
+really_big_float current = 0
+int count = 0
 
 function average(number) {
   count = count + 1
