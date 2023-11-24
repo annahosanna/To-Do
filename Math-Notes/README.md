@@ -1,10 +1,8 @@
 # Math Notes For Development
 
-### Need a fast calculation of FASC-N BDC (Binary Coded Decimal)
-### With the final value being an xor checksum
-### Note each FASC-N number is 5 bits 
-#### original at gtri-lead/bae-lib:client-api/src/main/java/util/bcd
-#### original at gtri-lead/bae-lib:client-api/src/main/java/org/gtri/gfipm/bae/v2_0/FASCNSubjectIdentifier.java
+##### Need a fast calculation of FASC-N BDC (Binary Coded Decimal)
+* original at gtri-lead/bae-lib:client-api/src/main/java/util/bcd
+* original at gtri-lead/bae-lib:client-api/src/main/java/org/gtri/gfipm/bae/v2_0/FASCNSubjectIdentifier.java
 ```
 This is normalllyy fead in as 200 bits - figure out a fast way to process it
 
@@ -108,10 +106,13 @@ ES 1 End Sentinel
 | Convert BCD as String to Base 10 |
 | --- |
 | Integrer.parseInt("1001",2) |
+| Integer.toString(9,2) |
 
+```
 Which basically means an even number of high bits = 1, and an odd number = 0
 One way or another its 200 bits either bcd -> bits or from a certificate
-(Fourth column is parity)
+```
+(40 x (4 bits for value + 1 bit for parity)
 | BCD | Parity | Value | Non BCD |
 | --- | --- | --- | --- | 
 | 0 0 0 0 | 1 | 0 | 0 |
@@ -150,7 +151,7 @@ One way or another its 200 bits either bcd -> bits or from a certificate
 | LRC | 1 |
 
 
-### Fast algorithm for the following running average
+#### Fast algorithm for the following running average
 
 ```
 # Assumes average over a infinite number of samples unless max_count is set
