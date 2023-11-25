@@ -84,9 +84,12 @@ ES 1 End Sentinel
 | BCD |
 | Odd parity |
 | Least significant bit first |
-| Parity bit is calculated by ensuring that there are always an odd number of bits |
+| Parity bit is calculated by ensuring that there are always an odd number of high bits |
 | Each LRC bit is to ensure the parity of each column |
 | The parity of the resulting LRC row is calculated as normal |
+
+| Bitwise Operators |
+| --- |
 | ~ complement (invert all bits) |
 | ^ xor |
 | & and |
@@ -94,19 +97,11 @@ ES 1 End Sentinel
 | >> Right shift |
 | << Left shift |
 
-| Non BCD Parity |
-| --- |
-| value = x |
-| value ^= value >> 8 | 
-| value ^= value >> 4 |
-| value ^= value >> 2 |
-| value ^= value >> 1 |
-| parity = value ^ 1 |
-
 | Convert BCD as String to Base 10 |
 | --- |
-| Integrer.parseInt("1001",2) |
-| Integer.toString(9,2) |
+| Integrer.parseInt("1001",2) = 9 |
+| Integer.toString(9,2) = "1001" |
+| A lookup table can be used to convert decimal to bcd |
 
 ```
 Which basically means an even number of high bits = 1, and an odd number = 0
