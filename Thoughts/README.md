@@ -255,3 +255,8 @@ Make sure your libraries are compatible with the version of react you have insta
 React bootstrap modules: read-scripts, react
 Some libaries which are interesting: next, axios, react-router, react-dom, react-arborist
 ```
+#### Message Queue Software
+* RocketMQ
+* Kafka
+* Sequential consumer reads
+* How would message dedupe work
