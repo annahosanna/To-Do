@@ -1,23 +1,26 @@
 # To-Do
+
 Ideas for things to do
 
 #### Realtime alerting
-* Add a Java tail implementation + Filter (grep kind of) + Slack client (raw or maybe Retrofit 2)
-* Combine tail implementation with filter and Slack notifier from VPN notes project.
-* Push to cloudtrail -> cloudwatch event -> SNS -> Lambda (https json serialization) -> Splunk/Slack/Whatever
-* Fliq or (Amazon equivalent) -> API Gateway -> Lambda (eg. a Graal microserivce framework) -> Whatever
-  1. Microservice is cross region
-  2. Keeps track of shared session state in DynamoDB (Perhaps using Spring Session?)  
-* Some SLF4J notes
+
+- Done: Add a Java tail implementation + Filter (grep kind of) + Slack client (raw or maybe Retrofit 2)
+- Done: Combine tail implementation with filter and Slack notifier from VPN notes project.
+- Done: Push to cloudtrail -> cloudwatch event -> SNS -> Lambda (https json serialization) -> Splunk/Slack/Whatever
+- Push a button to start your web app: Fliq or (Amazon equivalent) -> API Gateway -> Lambda (eg. a Graal microserivce framework) -> Whatever
 
 #### Cross Region Session State Implementation
-  * Many of AWS session state recommendations are not cross region. Figure out how  to use something like DynamoDB.
- 
+
+- Many of AWS session state recommendations are not cross region. Figure out how to use something like DynamoDB or Spring Sessions.
+
 #### Microservices and API Gateway and S3
-  * Might be fun to write some Lambdas to test with API gateway. 
-  * Might be fun to write Vertx REST serice in an ECS or EKS container fronted by API Gateway
-  * 
-##### Java Microservice frameworks with Graal (not Kotlin or Scala right now)
+
+- Might be fun to write some Lambdas to test with API gateway.
+- Might be fun to write Vertx REST serice in an ECS or EKS container fronted by API Gateway
+-
+
+##### Random notes: Java Microservice frameworks with Graal (not Kotlin or Scala right now - so they will work with Lambda)
+
 1. Vert.X
 2. Javalin
 3. SparkJava
@@ -36,13 +39,14 @@ Ideas for things to do
 16. Firefly
 
 ##### Things to explore
+
 1. Spring Security
 2. Spring Session
-3. Does Vertx need to be wrapped with an HttpSession interface for Spring Session
+3. What is the LOE to integrate Vertx with Spring Session
 4. Scheduled cloudwatch event to purge old sessions (from a session store db)
-5. es4x + Dart Redstone?
 
-##### Put these quick notes into something
+##### Really really old notes that do not even apply to Vert.X 5
+
 ```
 final CountDownLatch latch = new CountDownLatch(1);
 final Vertx vertx = Vertx.vertx();
@@ -58,6 +62,7 @@ latch.countDown();
 latch.await(5, TimeUnit.SECONDS);
 // Yay  started
 ```
+
 ```
 /////////////////////////////////////
 class MyVertxInitClass extends AbstractVertical {
@@ -92,36 +97,32 @@ public void stop() throws Exception {
 }
 }
 ```
-##### API Gateway + Lambda Notes
-* The focus of this will be microservices which can function with Graal. (Go/Rust/Python directly supported in Lambdas, so while some Rust microserivce frameworks look great, I will not be exploring those now)
-* Starting with TechEmpower benchmarks
 
-##### Demo using client side single page app to microservices behind API Gateway
-1. Something in Angular2 or similar
+##### API Gateway + Lambda Notes
+
+- The focus of this will be microservices which can function with Graal. (Go/Rust/Python directly supported in Lambdas, so while some Rust microserivce frameworks look great, I will not be exploring those now)
+- Starting with TechEmpower benchmarks (update - what happened to the benchmarks? Their page has not been updated in a while. The use case is for sites with such high demand that they cannot use containers, and instead are trying to use the least instances to handle the most load. In some cases the highest performing server may not be relevant, but rather its ability to integrate into a stack. At any rate it was still nice to see the top contenders.)
+
+##### Demo using client side single page app to microservices behind API Gateway (Still high on my priority list)
+
+1. Something in Angular2, React, Vue, or similar
 
 #### New Languages To Learn
-  * AST reasearch
-  * TypeScript looks useful
-  
-##### Notes for hosting a static website on S3
-1. Route 53
-2. Software to create static websites
 
-#### Container stuff
-* Process supervisors which do not use cgroups and are meant to run as pid 1: S6, Runit
-  1. Seems like AWS ECS Fargate injects some metadata environment variables into `/proc/1/environ` so it might be important to retain pid 1 environ. 
-* (S6 Overlay)[https://github.com/just-containers/s6-overlay]
-* What about tini -> bash -> Start programs -> 'wait'
-* Minimalistic init's to prevent zombies and resource leaks: tini/dumb-init/minit (Originally at `https://github.com/chazomaticus/minit`)/(or any other simple init)
-* Example project of a Docker container with a Process Supervisor, which start multiple processes such as (S6 Overlay)[https://github.com/just-containers/s6-overlay]
-* socklog (deal with missing /dev/log)
-* https://github.com/aws/aws-codebuild-docker-images/tree/master/al2/x86_64/standard/3.0 (this also does dind)
-* Systemd does not work in containers without extra capabilities for a number of reasons such as cgroups, and dbus - but it seems to be the standard most applications use.
-* Need to add a link here to the explanation of why dind is so hard, and which solutions are truely rootless.
-* S6 examples with comments. Execlineb and the way it uses a stack is neat and logical, but some examples are needed for when to use one thing rather than another.
-* S6 sometimes uses some fd stuff that is confusing and needs better comments.
-* S6 also needs to document its limits - such as when it needs a helper program, like socklog.
-* Although I may not like it some software requires systemd
+- AST reasearch
+
+#### Random Cloud Container Notes
+
+- Process supervisors which do not use cgroups and are meant to run as pid 1: S6, Runit
+  1. AWS ECS Fargate injects useful metadata into `/proc/1/environ` so it might be important to retain pid 1 environ. which can be parsed with Strings
+- (S6 Overlay)[https://github.com/just-containers/s6-overlay] (looks like it could be really great but the learning curve is high)
+- See BusyBox page on removing systemd
+- Minimalistic init's to prevent zombies and resource leaks: tini/dumb-init/minit (Originally at `https://github.com/chazomaticus/minit`)/(or any other simple init)
+- Example project of a Docker container with a Process Supervisor, which start multiple processes such as (S6 Overlay)[https://github.com/just-containers/s6-overlay]
+- socklog (deal with missing /dev/log)
+- Note AL2 is EOL: https://github.com/aws/aws-codebuild-docker-images/tree/master/al2/x86_64/standard/3.0 (this also does dind)
+- Systemd does not work in containers without extra capabilities for a number of reasons such as cgroups, and dbus - but it seems to be the standard most applications use. Good thing there is a systemctl replacement just for containers
+- Although I may not like it some people have oddly made software packages require systemd
   1. systemd (systemctl) (docker-systemctl-replacement)
   2. rsyslog
   3. logrotate
@@ -134,26 +135,27 @@ public void stop() throws Exception {
   10. net-tools
   11. maybe ethtool
   12. dbus
-  13. maybe java 
+  13. maybe java
 
 #### Add ECS/ECR/Fargate notes
-  * Add notes
-  * Find out how to do sidecars
-    1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
-    2. https://blog.aquasec.com/securing-aws-fargate-with-sidecards
-    3. https://aws.amazon.com/blogs/compute/nginx-reverse-sidecar-container-on-amazon-ecs/
-    4. https://blog.aquasec.com/revisiting-aws-fargate-with-aqua-3.0
-  * Add another entry to the array of images in the Task Definition. These can then share resources, but run as two seperate containers.
-    1. Good for being able to upgrade one container image without affecting the other.
-  * An ECS Fargate Metadata to EC2 Metadata mock. Some software assumes EC2, doesn't understand where to get ECS metadata. A mock that combines iptables, the ECS Metadata and some API calls to produce something that looks like EC2 Metadata would be useful for software compatibility.
+
+- Add notes
+- Find out how to do sidecars
+  1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
+  2. https://blog.aquasec.com/securing-aws-fargate-with-sidecards
+  3. https://aws.amazon.com/blogs/compute/nginx-reverse-sidecar-container-on-amazon-ecs/
+  4. https://blog.aquasec.com/revisiting-aws-fargate-with-aqua-3.0
+- Add another entry to the array of images in the Task Definition. These can then share resources, but run as two seperate containers.
+  1. Good for being able to upgrade one container image without affecting the other.
+- An ECS Fargate Metadata to EC2 Metadata mock. Some software assumes EC2, doesn't understand where to get ECS metadata. A mock that combines iptables, the ECS Metadata and some API calls to produce something that looks like EC2 Metadata would be useful for software compatibility.
 
 #### Jenkins
-* Add some Jenkins DSL and Groovy notes.
-* Add JDBC Ping tool (Fail fast for db integration testing/liquibase)
-  1.  Inspired by [https://github.com/OHDSI/WhiteRabbit/blob/master/src/org/ohdsi/databases/DBConnector.java]
+
+- Add some Jenkins DSL and Groovy notes.
 
 #### Projects I'm interested in because of the ESRI ArcGIS work I have done:
-* Various projects related to election data both sources and visualization
+
+- Various projects related to election data both sources and visualization
   1.  https://github.com/timcraft/electionmap
   2.  https://github.com/markmarkoh/datamaps
   3.  https://github.com/systers/volunteers-iOS
@@ -169,16 +171,9 @@ public void stop() throws Exception {
   13. https://github.com/buinyi/Udacity-Data-Visualization-with-D3.js---Election-results
   14. https://github.com/mapmeld/election-tangram
   15. https://github.com/JEverhart383/D3js-Elections-
-  
-#### CloudFormation examples (perhaps CDL and Teraform too)
-  1.  JSON <-> YAML conversion
-  2.  Template automation with FreeMarker
-  3.  Encrypted cross account S3 bucket logging
-  
-#### CustomClosableHttpClient uses HTTP Components
-* ~~Finish off~~ Stop working on CustomClosableHttpClient in VPN notes. It uses Apache HTTP Components which seem to be outdated.  Possibly switch to Netty. 
 
-* Random
+#### Random
+
 ```
 javalin
 sparkjava
@@ -222,15 +217,17 @@ dart + es4x ?
 ```
 
 #### Update FASC-N in BAE-Client
-* Validate checksum in iterator and add new 800-87r2 codes
-* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-87r2.pdf
-* https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.201-2.pdf
-* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-73-4.pdf
-* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-78-4.pdf
-* https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-76-2.pdf
-* https://www.idmanagement.gov/wp-content/uploads/sites/1171/uploads/TIG_SCEPACS_v2.3.pdf
+
+- Validate checksum in iterator and add new 800-87r2 codes
+- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-87r2.pdf
+- https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.201-2.pdf
+- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-73-4.pdf
+- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-78-4.pdf
+- https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-76-2.pdf
+- https://www.idmanagement.gov/wp-content/uploads/sites/1171/uploads/TIG_SCEPACS_v2.3.pdf
 
 ### Stuff that I probably do not need
+
 ```
 https://github.com/systers/volunteers-iOS
 https://github.com/aspittel/election-map
@@ -249,14 +246,18 @@ https://github.com/buinyi/Udacity-Data-Visualization-with-D3.js---Election-resul
 https://github.com/mapmeld/election-tangram
 https://github.com/JEverhart383/D3js-Elections-
 ```
+
 #### React Notes
+
 ```
 Make sure your libraries are compatible with the version of react you have installed (lets say 18+)
 React bootstrap modules: read-scripts, react
 Some libaries which are interesting: next, axios, react-router, react-dom, react-arborist
 ```
+
 #### Message Queue Software
-* RocketMQ
-* Kafka
-* Sequential consumer reads
-* How would message dedupe work
+
+- RocketMQ
+- Kafka
+- Sequential consumer reads
+- How would message dedupe work

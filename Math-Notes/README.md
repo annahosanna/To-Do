@@ -1,8 +1,10 @@
-# Math Notes For Development
+# This is all related to PIV/HSPD12
 
 ##### Need a fast calculation of FASC-N BDC (Binary Coded Decimal)
-* original at gtri-lead/bae-lib:client-api/src/main/java/util/bcd
-* original at gtri-lead/bae-lib:client-api/src/main/java/org/gtri/gfipm/bae/v2_0/FASCNSubjectIdentifier.java
+
+- original at gtri-lead/bae-lib:client-api/src/main/java/util/bcd
+- original at gtri-lead/bae-lib:client-api/src/main/java/org/gtri/gfipm/bae/v2_0/FASCNSubjectIdentifier.java
+
 ```
 This is normalllyy fead in as 200 bits - figure out a fast way to process it
 
@@ -26,7 +28,7 @@ Recommend coding as a “1” always
 
 PI 10 - Could mean different things to different agencies (The length is 9 for some agencies)
 PERSON IDENTIFIER
-Numeric Code used by the identity source to uniquely identify the token carrier. 
+Numeric Code used by the identity source to uniquely identify the token carrier.
 (e.g. DoD EDI PN ID, TWIC credential number, NASA UUPIC)
 
 OC 1
@@ -79,37 +81,39 @@ ES 1 End Sentinel
 
 -------------
 ```
-| FASC-N Math |
-| --- |
-| BCD |
-| Odd parity |
-| Least significant bit first |
+
+| FASC-N Math                                                                           |
+| ------------------------------------------------------------------------------------- |
+| BCD                                                                                   |
+| Odd parity                                                                            |
+| Least significant bit first                                                           |
 | Parity bit is calculated by ensuring that there are always an odd number of high bits |
-| Each LRC bit is to ensure the parity of each column |
-| The parity of the resulting LRC row is calculated as normal |
+| Each LRC bit is to ensure the parity of each column                                   |
+| The parity of the resulting LRC row is calculated as normal                           |
 
-| Bitwise Operators |
-| --- |
+| Bitwise Operators              |
+| ------------------------------ |
 | ~ complement (invert all bits) |
-| ^ xor |
-| & and |
-| \| or |
-| >> Right shift |
-| << Left shift |
+| ^ xor                          |
+| & and                          |
+| \| or                          |
+| >> Right shift                 |
+| << Left shift                  |
 
-| Convert BCD as String to Base 10 |
-| --- |
-| Integrer.parseInt("1001",2) = 9 |
-| Integer.toString(9,2) = "1001" |
+| Convert BCD as String to Base 10                     |
+| ---------------------------------------------------- |
+| Integrer.parseInt("1001",2) = 9                      |
+| Integer.toString(9,2) = "1001"                       |
 | A lookup table can be used to convert decimal to bcd |
 
 ```
 Which basically means an even number of high bits = 1, and an odd number = 0
 One way or another its 200 bits either bcd -> bits or from a certificate
 ```
+
 (40 x (4 bits for value + 1 bit for parity)
 | BCD | Parity | Value | Non BCD |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- |
 | 0 0 0 0 | 1 | 0 | 0 |
 | 1 0 0 0 | 0 | 1 | 8 |
 | 0 1 0 0 | 0 | 2 | 4 |
@@ -123,28 +127,27 @@ One way or another its 200 bits either bcd -> bits or from a certificate
 | 1 1 0 1 | 0 | Start Sentinel (SS) | 13 |
 | 1 0 1 1 | 0 | Field Separator (FS) | 11 |
 | 1 1 1 1 | 1 | End Sentinel (ES) | 15 |
-| ? ? ? ? | ? | Calculated Longitudinal Redundancy Character (LRC) | ? | 
+| ? ? ? ? | ? | Calculated Longitudinal Redundancy Character (LRC) | ? |
 
-| Code | Length |
-| --- | --- |
-| SS | 1 |
-| AGENCY CODE | 4 |
-| FS | 1 |
-| SYSTEM CODE | 4 |
-| FS | 1 |
-| CREDENTIAL NUMBER | 6 |
-| FS | 1 |
-| CS | 1 |
-| FS | 1 |
-| ICI | 1 |
-| FS | 1 |
-| PI | 10 |
-| OC | 1 |
-| OI | 4 |
-| POA | 1 |
-| ES | 1 |
-| LRC | 1 |
-
+| Code              | Length |
+| ----------------- | ------ |
+| SS                | 1      |
+| AGENCY CODE       | 4      |
+| FS                | 1      |
+| SYSTEM CODE       | 4      |
+| FS                | 1      |
+| CREDENTIAL NUMBER | 6      |
+| FS                | 1      |
+| CS                | 1      |
+| FS                | 1      |
+| ICI               | 1      |
+| FS                | 1      |
+| PI                | 10     |
+| OC                | 1      |
+| OI                | 4      |
+| POA               | 1      |
+| ES                | 1      |
+| LRC               | 1      |
 
 #### Fast algorithm for the following running average
 
@@ -164,4 +167,3 @@ function average(number) {
 
 # Could just pass a struct rather than global variables
 ```
-
