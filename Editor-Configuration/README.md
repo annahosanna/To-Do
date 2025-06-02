@@ -2,9 +2,12 @@
 
 ## Zed
 
-Similar to Atom but not as many plugins yet. A lot of configuration via command pallet - including ai assistant.
+Made by Atom folks
+Not as many plugins yet. Lots of AI integration via ai assistant in command pallet.
 
 ## Atom
+
+- EOL `:(`
 
 ---
 
@@ -14,38 +17,26 @@ Basically the same day MS purchased GitHub new commits to Atom fell to almost 0,
 
 #### Historical Atom Plugins, which because of core editor internal design decisions, some are still better than what can be found in VSCode.
 
+#### Updating this list as Zed reaches feature parity with Atom
+
 ```
-atom-ide-base (Generic IDE framework required for language specific IDEs)
-auto-indent (Automatically align code within scope using current tab stop character)
-busy-signal (part of linter package)
 compare-files (select two files from side bar, and open them for differences)
 copy-find-results (copy results from finding accross files)
 docblockr (quickly put in skelton of javadoc)
 file-types (add file types so that the language does not have to be mannually selected)
 highlight-bad-chars (highlight invisible unicode characters, which could cause problems)
-highlight-selected (high light all instances of a selected word in a document)
-ide-python (a python ide)
-indent-detective (automatically determine the type if indentation used in a file)
-indent-guide-improved (show vertical lines for scope matching)
-intentions (part of the linter package)
 json-converter (convert from json to yaml and back)
 language-docker
 language-gradle
 language-groovy
 language-powershell
-linter (a generic linter framework which linters build upon)
 linter-js-yaml
-linter-ui-default (part of linter framework)
-merge-conflicts (mergetool functionality)
-minimap (miniture of entire document on right side)
 minimap-find-and-replace (results displayed in minimap)
 minimap-git-diff (results displayed in minimap)
 minimap-highlight-selected (results displayed in minimap)
 minimap-linter (results displayed in minimap)
 minimap-split-diff (results displayed in minimap)
-multiline-tab (wrap open document tabs, instead of scrolling to the right forever)
 pretty-json (minifie <-> prettifie JSON)
-semanticolor (make each variable a different color using tree sitter - with a fall back to pre tree sitter)
 split-diff (view file differences side by side)
 sort-lines
 tabs-to-spaces (convert delemiter, for instance auto indent to align and then convert)

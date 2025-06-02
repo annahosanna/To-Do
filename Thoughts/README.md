@@ -140,7 +140,7 @@ public void stop() throws Exception {
 #### Add ECS/ECR/Fargate notes
 
 - Add notes
-- Find out how to do sidecars
+- Find out more about sidecars
   1. https://linkedin.com/pulse/architecting-sidecar-securely-aws-fargate-anuj-gupta?trk=public_profile_article_view
   2. https://blog.aquasec.com/securing-aws-fargate-with-sidecards
   3. https://aws.amazon.com/blogs/compute/nginx-reverse-sidecar-container-on-amazon-ecs/
@@ -261,3 +261,29 @@ Some libaries which are interesting: next, axios, react-router, react-dom, react
 - Kafka
 - Sequential consumer reads
 - How would message dedupe work
+
+#### NoSQL Databases
+
+- MongoDB
+- Cassandra
+- DynamoDB
+- Couchbase
+
+#### Key-Value Stores
+
+- Redis
+- Memcached
+- Riak
+- Aerospike
+
+#### In-Memory Data Grids
+
+- Hazelcast
+- Infinispan
+- Ehcache
+- Coherence
+- GemFire
+
+#### Data Lake
+
+#### Data Warehouse
