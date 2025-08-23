@@ -15,8 +15,42 @@ Q is quite smart with debugging. For instance if it generates source code it can
 Another way to use Q if via a Here Doc like: q chat -a <EOF whatever EOF
 In this way multiple sentances could be used. The first line is a general best effort to specify a program. There could be several sentances without a linebreak. The length of each sentance is shorter and the length of the line is likely to wrap only a few times.
 
-After a linebreak, refine the specification. In this way a single line does not need to accurately describe the entire project. Repeat adding new lines with a linebreak to continue to refining the project.
+After a linebreak, refine the specification. In this way a single line does not need to accurately describe the entire project. Repeat adding new requirements with a linebreak to continue to refining the project. For instance a statement might be 'persist all user data entered', and on a newline enter 'don't persist field 1'
 
-At some point test the project. Build it and identify any build errors. Specify the text of the build error and ask Q to fix it. (for swift for instance; however it automatically did this process for Java)
+Its important that words in a sentance are not ambigious. Try to use specific words that do not need context to understand.
 
-Once the program builds review the functionality against what you expected, try to figure out missing feature, bugs and edge cases. Then ask Q to few
+At some point test the project. Build it and identify any build errors. Specify the text of the build error and ask Q to fix it. (for swift for instance; however it automatically did this process for Java) After the major defintion, but before the refinement is when I performed the inital build and worked through any build errors.
+
+Once the program builds review the functionality against what you expected, try to figure out missing features, bugs and edge cases. Then specify the functionality you would like refined or added. Things to look for in simple mobile apps might be: Is data persisted? Does the program let every element in an array be deleted when there must be at least one? Is it reimplemenmting functionality already provided by the OS? If a list is very large does it cause logic or UI issues (to big to display on screen)? Does the application function as expected when it is in the background and then brought to the foreground (background apps are suspended so clock might display the wrong time). Its also possible with many changes dead code sections and unused variables may occur. (but your compiler should notify you). And finally the code and structure may or may not follow best practices. Particularly with regard to security. Assume that if you have not explicitly stated how to implement something in a secure way, that it was not implemented with security or data validation in mind.
+
+Just to be safe always commit to a remote repository frequently. If something goes really wrong the whole project may be removed, in which case a local git repository will not do any good.
+
+### Most of all
+It is so easy to generate lots of code that the joy of creating, creativity and problem solving was not preseant. :(
+Instead it was an exercise is knowing what I wanted and figuring out how to ask for it (while that was problem solving it wasn't really creativity).
+I did still have to have knowledge of data structures "create a many to one map using thing as a key" And if this was a much more involved project I would have specified the details of an object. Thus some amount of thought and experience needs to go into creating the specification. Which is to say you should be able to look at what is being generated and know if its what you intended, and when asking for something you already know what the outcome should be. Furthermore you still need to know libraries, and system provided functionality so that you do not reinvent the wheel.
+
+So I was left feeling uninspired when in fact I should have felt that I could quickly create every piece of software on my idea list. (Most of this work via Q ultimately leveraged Claude 3.7/4.0) Furthermore I should have felt like there were even more projects I could dream up since I was no longer limited by the programing languages and platforms I was familiar with. Perhaps thats still to come and then I will feel like it is a PITA when I have to write code.
+
+Generally the first line of my query would start out: `Create a new project, writien in ___ , named ___ . Do not use stubs.`
+
+In a CI/CD pipeline, the software may build fine, but I definely would want to run this through software which catches security issues. (Because AI software tracks context, I wouldn't be surpised if there was already software to identify security issues in complex data flows)
+
+So before you become uninspired think of all of the problems you would like to solve for which another solution does not exist (or it does but there is some barrier to entry)
+
+At some point I would like to update this document with information about MCP, n8n, langchain, agents, and vector databases. Currently I feel like there are those who know it in theory, and those who have actually implemented it - but no one to walk though in plain english how to get from the theory to the implementation. (I understand things best when I can see it in code)
+
+AI is good at:
+Loweriing the barrier to entry: Easy to create ideas. Easy to re-implement something that you cannot obtain because it cost money or because it isn't available. (but you still have to know how to get from point a to point b, and be willing to know or discover the pieces in between)
+
+In my opinion what does this mean for entry level software developers and computer science in general:
+While fewer people will be needed to turn out code, those that use AI will still need to have a good knowledge of how all of the parts of their project should work, or else they will not be able to create detailed requirements, or troubleshoot issues beyond what the AI understands.
+I'm concerned there will be a decrease in technology inovation and the drive to invent the newest best algorithm or whatever. The brain trust for new ideas and new solutions will be smaller. I would guess the number of CS PhD's would decrease and thus so would thesis ideas.
+
+What does this mean for MBA (or just business roles in general):
+Those that define how the business will function and how they will make money will be much closer to defining the requirements which are fed into the AI to create. Perhaps it would be benifial to Major in business and minor is CS visa versa.
+This will increase business efficency using existing processes and ideas. (but is unlikely to generate new ideas which would revolutionize the business) 
+
+Example: More AI agents and more context sources will be required. For instance if an AI were to create a new operating system it should have information about what users are missing from their current operating system - in fact it will probably need context about what users like too so that functionality is not lost) I think often we build on (large complex) ideas, and take for granted the value being built upon. I think that people talk about explicit technical debt (what needs to be fixed), without regard for enumerating everything that works and how it was implemented. If you were trying to explain it to AI you would not only need to express what needs to be fixed but also everything that works correctly and even the rules for how it works. (api call best practices)
+
+
