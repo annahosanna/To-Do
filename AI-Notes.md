@@ -53,4 +53,12 @@ This will increase business efficency using existing processes and ideas. (but i
 
 Example: More AI agents and more context sources will be required. For instance if an AI were to create a new operating system it should have information about what users are missing from their current operating system - in fact it will probably need context about what users like too so that functionality is not lost) I think often we build on (large complex) ideas, and take for granted the value being built upon. I think that people talk about explicit technical debt (what needs to be fixed), without regard for enumerating everything that works and how it was implemented. If you were trying to explain it to AI you would not only need to express what needs to be fixed but also everything that works correctly and even the rules for how it works. (api call best practices)
 
+So I implemented an MCP server as follow:
+REST api wrapped MCP logic
+The calls to the rest endpoint can be wrapped as "tools" and registered with llm
+then the message can be passed to the llm and it will return the call the to the tool or an error
+but that would be a huge number of tokens so a vector database can be used to determine most likely answers (vector databases measure similartiy), the other thing vector databases can do is provide suplemental related information
+
+so instead of having to send a huge amount of data to be turned into tokens (4/3 the number of words) only a small amount as determined by the vector database needs to be sent
+Larger chucks help more context in a vector database but to make sure no content is lost chunks should overlap by 25% to be safe.
 
