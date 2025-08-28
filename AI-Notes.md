@@ -57,7 +57,7 @@ So I implemented an MCP server as follow:
 REST api wrapped MCP logic
 The calls to the rest endpoint can be wrapped as "tools" and registered with llm
 then the message can be passed to the llm and it will return the call the to the tool or an error
-but that would be a huge number of tokens so a vector database can be used to determine most likely answers (vector databases measure similartiy), the other thing vector databases can do is provide suplemental related information
+but that would be a huge number of tokens so a vector database can be used to determine most likely answers (vector databases measure similartiy), the other thing vector databases can do is provide suplemental related information (if you need a vector database try postgres + pgvector + pgvectorscale)
 
 so instead of having to send a huge amount of data to be turned into tokens (4/3 the number of words) only a small amount as determined by the vector database needs to be sent
 Larger chucks help more context in a vector database but to make sure no content is lost chunks should overlap by 25% to be safe.
@@ -68,5 +68,6 @@ So far
 I wanted a stopwatch app with special timing and alerting abilities (inherited time, integration with apple watch, meeting notes, send to slack)
 I wanted an app that could save workflows in a standard way (bpmn) but I wanted to extend it so the optionally I could click on a task and take me to the relevant documentation/web page for that task. While it doesn't have a beatiful UI, and it doesn't have pretty line routing, It does what I need. (start, end, gateway, task, lines with arrows, plus clickable)(UI needs to be cleaned up, short cut keys, and mouse clicking needs to be intuitive, selection speed/application more responsiveness, less precise mouse clicks, editing more intuitive, adding new objects easier.
 
+Writing a query for an llm is interesting. It could spit out a different answer every time. You need some kind of 'guard rails' which first ask the llm to create something and then another query to ask the llm to validate it. (you would kind of think the first query would have returned a valid answer) Thus it is important to notice what the llm sometimes gets wrong and what it always gets right (one way or another) I have even had llm spit out code and it could not figure out what was wrong until a human pointed out that the area of focus was much larger than the control, and that the problem was not with the control.) 
 
 
