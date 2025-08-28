@@ -62,3 +62,11 @@ but that would be a huge number of tokens so a vector database can be used to de
 so instead of having to send a huge amount of data to be turned into tokens (4/3 the number of words) only a small amount as determined by the vector database needs to be sent
 Larger chucks help more context in a vector database but to make sure no content is lost chunks should overlap by 25% to be safe.
 
+After aa few days I realized now instead of prioritizing project and figuring out what I want to experiment with, I can just check if someone has already written the app I need and if not I'll write it myself in a very short period of time. There is no longer a piece of software I cannot make if I do not like what is out there. No more wishing for features so that it would fit my use case. Certainly for complex problems it is not possible, but for simple problems it works.
+
+So far
+I wanted a stopwatch app with special timing and alerting abilities (inherited time, integration with apple watch, meeting notes, send to slack)
+I wanted an app that could save workflows in a standard way (bpmn) but I wanted to extend it so the optionally I could click on a task and take me to the relevant documentation/web page for that task. While it doesn't have a beatiful UI, and it doesn't have pretty line routing, It does what I need. (start, end, gateway, task, lines with arrows, plus clickable)(UI needs to be cleaned up, short cut keys, and mouse clicking needs to be intuitive, selection speed/application more responsiveness, less precise mouse clicks, editing more intuitive, adding new objects easier.
+
+
+
